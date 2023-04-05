@@ -11,11 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
@@ -45,7 +41,7 @@ public class StudentServiceImpl implements StudentService {
                 .orElseThrow(() -> new StudentNotFoundException("Student not found with id " + id));
     }
     @Override //Method to create student
-    public Student createStudent(Student student) throws ParseException {
+    public Student createStudent(Student student) {
 
         //if the current score is null, set the score to 0 and avarage to 0 but the zero is not saved to the score storage
         student.setCurrent_score(student.getCurrent_score() == null ? 0 : student.getCurrent_score());
@@ -134,7 +130,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     //Methode to generate Student number
-    private String generateStudentNumber(String firstName, String lastName) {
+    public String generateStudentNumber(String firstName, String lastName) {
         log.info("generate student number");
         // Generate student number by concatenating first letter of first name and last name
         int randomInt = ThreadLocalRandom.current().nextInt(100000, 1000000);

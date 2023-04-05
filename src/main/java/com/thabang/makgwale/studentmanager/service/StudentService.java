@@ -3,7 +3,6 @@ package com.thabang.makgwale.studentmanager.service;
 import com.thabang.makgwale.studentmanager.model.Score;
 import com.thabang.makgwale.studentmanager.model.Student;
 
-import java.text.ParseException;
 import java.util.List;
 
 public interface StudentService {
@@ -11,7 +10,7 @@ public interface StudentService {
     Student getStudentById(Long id);
     List<Student> getAllStudent();
 
-    Student createStudent(Student student) throws ParseException;
+    Student createStudent(Student student);
 
     Student updateStudent(Student student, Long id);
 
